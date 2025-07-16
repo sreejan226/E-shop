@@ -5,6 +5,24 @@ import cookieParser from 'cookie-parser';
 import router from './routes/auth.router';
 import swaggerUi from 'swagger-ui-express';
 
+// Basic swagger configuration in case the file doesn't exist yet
+let swaggerDocument = {
+    openapi: '3.0.0',
+    info: {
+        title: "Auth Service API",
+        description: "API Documentation",
+        version: "1.0.0"
+    },
+    paths: {}
+};
+
+// Try to load the generated swagger file
+try {
+    swaggerDocument = require('./swagger-output.json');
+} catch (error) {
+    console.warn('Swagger documentation file not found, using default configuration');
+}
+
 const app = express();
 
 app.use(express.json());
@@ -20,23 +38,7 @@ app.get('/', (req, res) => {
     res.send({ 'message': 'Hello API'});
 });
 
-// Basic Swagger configuration
-const swaggerDocument = {
-    openapi: '3.0.0',
-    info: {
-        title: "Auth Service API",
-        description: "API Documentation",
-        version: "1.0.0"
-    },
-    servers: [
-        {
-            url: 'http://localhost:6001',
-            description: 'Local server'
-        }
-    ],
-    paths: {}  // Will be populated by route handlers
-};
-
+// Setup Swagger documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get("/docs-json", (req,res) => {
     res.json(swaggerDocument);

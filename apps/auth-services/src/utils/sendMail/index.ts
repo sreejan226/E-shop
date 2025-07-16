@@ -21,10 +21,11 @@ const transporter = nodemailer.createTransport({
 const renderEmailTemplate = async (templateName: String, data: Record<string, any>): Promise<string> => {
     const templatePath = path.join (
         process.cwd(),
-        "auth-service",
+        "apps",
+        "auth-services",
         "src",
         "utils",
-        "email-template",
+        "email-templates",
         `${templateName}.ejs`
     );
     
