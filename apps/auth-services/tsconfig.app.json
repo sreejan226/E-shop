@@ -10,7 +10,9 @@
   },
   "include": [
     "src/**/*.ts",
-    "../../packages/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.json",
+    "../../packages/**/**.ts",
     "../../api-gateway/src/**/*.ts"
   ],
   "exclude": [
