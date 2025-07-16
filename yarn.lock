@@ -1707,19 +1707,19 @@
     tslib "^2.3.0"
     yargs-parser "21.1.1"
 
-"@org/api-gateway-e2e@file:C:\\Users\\darsh\\Desktop\\E-shop\\apps\\api-gateway-e2e":
+"@org/api-gateway-e2e@file:C:\\Users\\Sreejan\\Desktop\\E-shop\\apps\\api-gateway-e2e":
   version "0.0.1"
   resolved "file:apps/api-gateway-e2e"
 
-"@org/api-gateway@file:C:\\Users\\darsh\\Desktop\\E-shop\\apps\\api-gateway":
+"@org/api-gateway@file:C:\\Users\\Sreejan\\Desktop\\E-shop\\apps\\api-gateway":
   version "0.0.1"
   resolved "file:apps/api-gateway"
 
-"@org/auth-services-e2e@file:C:\\Users\\darsh\\Desktop\\E-shop\\apps\\auth-services-e2e":
+"@org/auth-services-e2e@file:C:\\Users\\Sreejan\\Desktop\\E-shop\\apps\\auth-services-e2e":
   version "0.0.1"
   resolved "file:apps/auth-services-e2e"
 
-"@org/auth-services@file:C:\\Users\\darsh\\Desktop\\E-shop\\apps\\auth-services":
+"@org/auth-services@file:C:\\Users\\Sreejan\\Desktop\\E-shop\\apps\\auth-services":
   version "0.0.1"
   resolved "file:apps/auth-services"
 
