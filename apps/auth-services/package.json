@@ -1,81 +1,15 @@
 {
-  "name": "@org/auth-services",
+  "name": "auth-services",
   "version": "0.0.1",
-  "private": true,
-  "nx": {
-    "targets": {
-      "build": {
-        "executor": "@nx/esbuild:esbuild",
-        "outputs": [
-          "{options.outputPath}"
-        ],
-        "defaultConfiguration": "production",
-        "options": {
-          "platform": "node",
-          "outputPath": "apps/auth-services/dist",
-          "format": [
-            "cjs"
-          ],
-          "bundle": false,
-          "main": "apps/auth-services/src/main.ts",
-          "tsConfig": "apps/auth-services/tsconfig.app.json",
-          "assets": [
-            "apps/auth-services/src/assets"
-          ],
-          "esbuildOptions": {
-            "sourcemap": true,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
-        },
-        "configurations": {
-          "development": {},
-          "production": {
-            "generateLockfile": true,
-            "esbuildOptions": {
-              "sourcemap": false,
-              "outExtension": {
-                ".js": ".js"
-              }
-            }
-          }
-        }
-      },
-      "serve": {
-        "continuous": true,
-        "executor": "@nx/js:node",
-        "defaultConfiguration": "development",
-        "dependsOn": [
-          "build"
-        ],
-        "options": {
-          "buildTarget": "@org/auth-services:build",
-          "runBuildTargetDependencies": false
-        },
-        "configurations": {
-          "development": {
-            "buildTarget": "@org/auth-services:build:development"
-          },
-          "production": {
-            "buildTarget": "@org/auth-services:build:production"
-          }
-        }
-      },
-      "test": {
-        "options": {
-          "passWithNoTests": true
-        }
-      },
-      "docker-build": {
-        "dependsOn": [
-          "build"
-        ],
-        "command": "docker build -f apps/auth-services/Dockerfile . -t org-auth-services"
-      }
-    }
-  },
   "dependencies": {
-    "swagger-ui-express": "^5.0.1"
+    "express": "^4.18.2",
+    "tslib": "^2.3.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "type": "commonjs",
+  "main": "./src/main.ts",
+  "scripts": {
+    "swagger": "node src/swagger.js"
   }
 }

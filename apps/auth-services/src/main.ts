@@ -21,22 +21,21 @@ app.get('/', (req, res) => {
     res.send({ 'message': 'Hello API'});
 });
 
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-app.get("/docs-json", (req,res) => {
+// Swagger documentation
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.get("/docs.json", (req,res) => {
     res.json(swaggerDocument);
 })
 
 //Routes
-
-app.use("/api", router)
+app.use("/api", router);
 
 app.use(errorMiddleware);
 
 const port = process.env.port || 6001;
 const server = app.listen(port, () => {
-    console.log(`Auth service is running on http://localhost${port}/api`)
-    console.log(`Swagger documents is available at http://localhost:${port}/docs`)
+    console.log(`Auth service is running on http://localhost:${port}/api`)
+    console.log(`Swagger documentation is available at http://localhost:${port}/docs`)
 })
 
 server.on("error", (err) => {

@@ -1,5 +1,4 @@
-import { version } from "os";
-import swaggerAutogen from "swagger-autogen";
+const swaggerAutogen = require("swagger-autogen")();
 
 const doc = {
     info: {
@@ -14,4 +13,6 @@ const doc = {
 const outputFile = "./swagger-output.json";
 const endPointsFiles = ["./routes/auth.router.ts"];
 
-swaggerAutogen()(outputFile, endPointsFiles, doc);
+swaggerAutogen(outputFile, endPointsFiles, doc);
+
+

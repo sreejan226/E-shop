@@ -10,7 +10,7 @@ const swcJestConfig = JSON.parse(
 swcJestConfig.swcrc = false;
 
 export default {
-  displayName: '@org/auth-services',
+  displayName: 'auth-services',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

@@ -1,14 +1,16 @@
 {
-  "name": "@org/source",
+  "name": "@./source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "npx nx run-many --target=serve --all"
+    "dev": "npx nx run-many --target=serve --all",
+    "auth-docs": "node apps/auth-services/src/swagger.js"
   },
   "private": true,
   "dependencies": {
     "@prisma/client": "^6.11.1",
     "axios": "^1.10.0",
+    "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
@@ -17,12 +19,11 @@
     "express-http-proxy": "^2.1.1",
     "express-rate-limit": "^7.5.1",
     "ioredis": "^5.6.1",
+    "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "nodemailer": "^7.0.5",
     "prisma": "^6.11.1",
-
     "swagger-autogen": "^2.23.7",
-
     "swagger-ui-express": "^5.0.1",
     "tsconfig-paths": "^4.2.0"
   },
@@ -48,6 +49,7 @@
     "@types/express-http-proxy": "^1.6.6",
     "@types/http-proxy-middleware": "^0.19.3",
     "@types/jest": "^29.5.12",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/node": "~18.16.9",
     "@types/nodemailer": "^6.4.17",

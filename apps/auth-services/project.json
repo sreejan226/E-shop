@@ -1,0 +1,54 @@
+{
+  "name": "auth-services",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/auth-services/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/auth-services",
+        "main": "apps/auth-services/src/main.ts",
+        "tsConfig": "apps/auth-services/tsconfig.app.json",
+        "assets": ["apps/auth-services/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/auth-services/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "auth-services:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "auth-services:build:development"
+        },
+        "production": {
+          "buildTarget": "auth-services:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/auth-services/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+} 
