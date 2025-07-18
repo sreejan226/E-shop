@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.get("/docs.json", (req,res) => {
     res.json(swaggerDocument);
-})
+});
 
 //Routes
 app.use("/api", router);

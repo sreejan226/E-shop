@@ -44,7 +44,7 @@ export const trackOtpRequests = async (email: string, next:NextFunction) => {
     let otpRequests = parseInt((await redis.get(otpRequestKey)) || "0");
 
     if(otpRequests >= 2) {
-        await redis.set(`otp_spam_lock: ${email}`, "locked", "EX", 3600);
+        await redis.set(`otp_spam_lock: ${email}`, "locked", "EX", 3600); 
         return next(new ValidationError("Too many otp requests. Please wait one hour before requesting again"))
     }
 
@@ -67,6 +67,7 @@ export const verifyOtp = async (email:string, otp:string, next:NextFunction) => 
             await redis.del(`otp:${email}`, failedAttemptsKey);
             throw next (new ValidationError("Too many failed attempts. Your account is locked for 30 minutes"));
         }
+        
 
         await redis.set(failedAttemptsKey, failedAttemts+1, "EX", 300);
         throw next(new ValidationError(`Incorect Otp, ${2-failedAttemts} attempts left.`));
